@@ -11,6 +11,7 @@
     "@jsonforms/core": "git+https://github.com/sdirix/jsonforms.git#deploy-vue-core",
     "@jsonforms/vue": "git+https://github.com/sdirix/jsonforms.git#deploy-vue-vue",
     "core-js": "^3.6.5",
+    "sass-loader": "^10.1.0",
     "vue": "^2.6.11"
   },
   "devDependencies": {
