@@ -10,22 +10,14 @@
 </template>
 
 <script>
-import {isLayout, rankWith} from '@jsonforms/core'
 import {DispatchRenderer, layout} from '@jsonforms/vue'
 
-const layoutRenderer = {
+export default {
   name: 'LayoutRenderer',
   components: {
     DispatchRenderer
   },
   mixins: [layout]
-}
-
-export default layoutRenderer
-
-export const entry = {
-  renderer: layoutRenderer,
-  tester: rankWith(1, isLayout)
 }
 </script>
 

@@ -7,10 +7,9 @@
 </template>
 
 <script>
-import {isControl, rankWith} from '@jsonforms/core'
 import {control} from '@jsonforms/vue'
 
-const controlRenderer = {
+export default {
   name: 'Name',
   mixins: [control],
   computed: {
@@ -23,13 +22,6 @@ const controlRenderer = {
       this.handleChange(this.control.path, event.target.value)
     }
   }
-}
-
-export default controlRenderer
-
-export const entry = {
-  renderer: controlRenderer,
-  tester: rankWith(1, isControl)
 }
 </script>
 

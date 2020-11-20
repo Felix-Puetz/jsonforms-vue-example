@@ -18,8 +18,7 @@
 
 <script>
 import {JsonForms} from '@jsonforms/vue'
-import {entry as layoutEntry} from './components/LayoutRenderer.vue'
-import {entry as controlEntry} from './components/ControlRenderer.vue'
+import {controlRenderer, layoutRenderer} from '@/renderers'
 
 export default {
   name: 'App',
@@ -36,8 +35,8 @@ export default {
           age: '35'
         },
         renderers: [
-            layoutEntry,
-            controlEntry
+            layoutRenderer,
+          controlRenderer
         ]
       }
     }
