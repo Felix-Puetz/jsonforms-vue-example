@@ -12,7 +12,8 @@
     <h2>generated form</h2>
     <json-forms
         :data="jsonForms.data"
-        :renderers="jsonForms.renderers"/>
+        :renderers="jsonForms.renderers"
+        @change="onChange"/>
   </div>
 </template>
 
@@ -35,10 +36,15 @@ export default {
           age: '35'
         },
         renderers: [
-            layoutRenderer,
+          layoutRenderer,
           controlRenderer
         ]
       }
+    }
+  },
+  methods: {
+    onChange(event) {
+      this.jsonForms.data = event.data
     }
   }
 }
