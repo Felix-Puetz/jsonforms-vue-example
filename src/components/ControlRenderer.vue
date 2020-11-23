@@ -1,7 +1,7 @@
 <template>
   <div class="control-entry">
     <label :for="vId">{{ control.label }}</label>
-    <input :value="control.data" :id="vId" @change="onChange"/>
+    <input :value="control.data" :id="vId" @input="onInput"/>
     <div class="error" v-if="control.errors">{{ control.errors }}</div>
   </div>
 </template>
@@ -18,7 +18,7 @@ export default {
     }
   },
   methods: {
-    onChange(event) {
+    onInput(event) {
       this.handleChange(this.control.path, event.target.value)
     }
   }
