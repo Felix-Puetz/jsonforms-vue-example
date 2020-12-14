@@ -10,14 +10,23 @@
 </template>
 
 <script>
-import {DispatchRenderer, layout} from '@jsonforms/vue'
+import {
+  DispatchRenderer,
+  rendererProps,
+  useJsonFormsLayout
+} from '@jsonforms/vue2/lib/jsonforms-vue'
 
 export default {
   name: 'LayoutRenderer',
   components: {
     DispatchRenderer
   },
-  mixins: [layout]
+  props: {
+    ...rendererProps()
+  },
+  setup(props) {
+    useJsonFormsLayout(props)
+  }
 }
 </script>
 

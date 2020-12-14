@@ -7,11 +7,16 @@
 </template>
 
 <script>
-import {control} from '@jsonforms/vue'
+import {rendererProps, useJsonFormsRenderer} from '@jsonforms/vue2/lib/jsonforms-vue'
 
 export default {
   name: 'Name',
-  mixins: [control],
+  props: {
+    ...rendererProps()
+  },
+  setup(props) {
+    useJsonFormsRenderer(props)
+  },
   computed: {
     vId() {
       return `control-entry-${this._uid}`
