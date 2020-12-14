@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import {rendererProps, useJsonFormsRenderer} from '@jsonforms/vue2/lib/jsonforms-vue'
+import {rendererProps, useJsonFormsControl} from '@jsonforms/vue2'
 
 export default {
   name: 'Name',
@@ -15,7 +15,7 @@ export default {
     ...rendererProps()
   },
   setup(props) {
-    useJsonFormsRenderer(props)
+    return useJsonFormsControl(props);
   },
   computed: {
     vId() {

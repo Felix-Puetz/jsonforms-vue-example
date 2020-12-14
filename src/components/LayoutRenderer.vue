@@ -14,7 +14,7 @@ import {
   DispatchRenderer,
   rendererProps,
   useJsonFormsLayout
-} from '@jsonforms/vue2/lib/jsonforms-vue'
+} from '@jsonforms/vue2'
 
 export default {
   name: 'LayoutRenderer',
@@ -25,7 +25,7 @@ export default {
     ...rendererProps()
   },
   setup(props) {
-    useJsonFormsLayout(props)
+    return useJsonFormsLayout(props);
   }
 }
 </script>
