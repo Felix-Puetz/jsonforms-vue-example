@@ -1,53 +1,65 @@
 <template>
   <div id="app">
     <h1>jsonforms-vue-example</h1>
-    <br/>
-    <br/>
-    <br/>
-    <hr/>
+    <br />
+    <br />
+    <br />
+    <hr />
     <h2>data</h2>
     <pre>{{ jsonForms.data }}</pre>
-    <br/>
-    <hr/>
+    <br />
+    <hr />
     <h2>generated form</h2>
     <json-forms
-        :data="jsonForms.data"
-        :renderers="jsonForms.renderers"
-        @change="onChange"/>
+      :data="jsonForms.data"
+      :schema="jsonForms.schema"
+      :renderers="jsonForms.renderers"
+      @change="onChange"
+    />
   </div>
 </template>
 
 <script>
-import {JsonForms} from '@jsonforms/vue'
-import {controlRenderer, layoutRenderer} from '@/renderers'
+import { JsonForms } from "@jsonforms/vue2";
+import { controlRenderer, layoutRenderer } from "@/renderers";
+
+const initialData = {
+  name: "John Doe",
+  mail: "john@doe.example",
+  job: "Software-Developer",
+  age: 35,
+};
+
+const schema = {
+  type: "object",
+  properties: {
+    name: { type: "string" },
+    mail: { type: "string" },
+    job: { type: "string" },
+    age: { type: "number" },
+  },
+};
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    JsonForms
+    JsonForms,
   },
   data() {
     return {
       jsonForms: {
-        data: {
-          name: 'John Doe',
-          mail: 'john@doe.example',
-          job: 'Software-Developer',
-          age: '35'
-        },
-        renderers: [
-          layoutRenderer,
-          controlRenderer
-        ]
-      }
-    }
+        data: initialData,
+        schema: schema,
+        renderers: Object.freeze([layoutRenderer, controlRenderer]),
+      },
+    };
   },
   methods: {
     onChange(event) {
-      this.jsonForms.data = event.data
-    }
-  }
-}
+      this.jsonForms.data = event.data;
+    },
+  },
+};
 </script>
 
 <style lang="scss">
@@ -60,7 +72,9 @@ export default {
   margin-top: 60px;
   padding: 5rem;
 
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     color: #555;
     text-transform: capitalize;
   }
