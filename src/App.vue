@@ -1,47 +1,89 @@
 <template>
   <div id="app">
     <h1>jsonforms-vue-example</h1>
-    <br />
-    <br />
-    <br />
-    <hr />
+    <br/>
+    <br/>
+    <br/>
+    <hr/>
     <h2>data</h2>
     <pre>{{ jsonForms.data }}</pre>
-    <br />
-    <hr />
+    <br/>
+    <hr/>
     <h2>generated form</h2>
     <json-forms
-      :data="jsonForms.data"
-      :schema="jsonForms.schema"
-      :renderers="jsonForms.renderers"
-      @change="onChange"
+        :data="jsonForms.data"
+        :schema="jsonForms.schema"
+        :uischema="jsonForms.uischema"
+        :renderers="jsonForms.renderers"
+        @change="onChange"
     />
   </div>
 </template>
 
 <script>
-import { JsonForms } from "@jsonforms/vue2";
-import { controlRenderer, layoutRenderer } from "@/renderers";
+import {JsonForms} from '@jsonforms/vue2'
+import {controlRenderer, layoutRenderer} from '@/renderers';
 
 const initialData = {
-  name: "John Doe",
-  mail: "john@doe.example",
-  job: "Software-Developer",
-  age: 35,
+  job: null
 };
 
 const schema = {
-  type: "object",
+  type: 'object',
   properties: {
-    name: { type: "string" },
-    mail: { type: "string" },
-    job: { type: "string" },
-    age: { type: "number" },
+    name: {type: 'string'},
+    mail: {type: 'string'},
+    job: {type: 'string'},
+    age: {type: 'number'},
   },
+  required: ['name', 'mail']
 };
 
+const uischema = {
+  elements: [
+    {
+      scope: '#/properties/name',
+      label: 'Name',
+      type: 'control'
+    },
+    {
+      scope: '#/properties/mail',
+      label: 'E-Mail',
+      type: 'control',
+      rule: {
+        condition: {
+          scope: '#/properties/name',
+          schema: {
+            const: null
+          }
+        },
+        effect: 'DISABLE'
+      }
+    },
+    {
+      scope: '#/properties/job',
+      label: 'Job',
+      type: 'control'
+    },
+    {
+      scope: '#/properties/age',
+      label: 'Age',
+      type: 'control',
+      rule: {
+        condition: {
+          scope: '#/properties/job',
+          schema: {
+            const: null
+          }
+        },
+        effect: 'DISABLE'
+      }
+    },
+  ]
+}
+
 export default {
-  name: "App",
+  name: 'App',
   components: {
     JsonForms,
   },
@@ -49,7 +91,8 @@ export default {
     return {
       jsonForms: {
         data: initialData,
-        schema: schema,
+        schema,
+        uischema,
         renderers: Object.freeze([layoutRenderer, controlRenderer]),
       },
     };
