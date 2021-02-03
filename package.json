@@ -8,8 +8,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@jsonforms/core": "git+https://github.com/sdirix/jsonforms.git#deploy-vue-core",
-    "@jsonforms/vue2": "git+https://github.com/sdirix/jsonforms.git#deploy-vue-vue2",
+    "@jsonforms/core": "^2.5.0",
+    "@jsonforms/vue2": "^2.5.0-beta.1",
     "@vue/composition-api": "^1.0.0-beta.21",
     "core-js": "^3.6.5",
     "sass": "^1.29.0",
