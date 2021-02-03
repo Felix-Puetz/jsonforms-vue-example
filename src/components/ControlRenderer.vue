@@ -1,7 +1,7 @@
 <template>
   <div class="control-entry">
     <label :for="vId">{{ control.label }}</label>
-    <input :value="control.data" :id="vId" @input="onInput"/>
+    <input :value="control.data" :id="vId" :disabled="!control.enabled" @input="onInput"/>
     <div class="error" v-if="control.errors">{{ control.errors }}</div>
   </div>
 </template>
@@ -51,7 +51,7 @@ export default {
     padding: 0.25rem 1rem;
     margin: 0.25rem;
     border-radius: 5px;
-    background-color: #ff4949;
+    background-color: #ff494966;
     color: #fff;
     font-weight: bold;
     text-align: left;
