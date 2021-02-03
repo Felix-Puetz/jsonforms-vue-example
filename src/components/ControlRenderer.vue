@@ -46,5 +46,16 @@ export default {
     padding: .25rem;
     font-size: 16px;
   }
+
+  .error {
+    padding: 0.25rem 1rem;
+    margin: 0.25rem;
+    border-radius: 5px;
+    background-color: #ff4949;
+    color: #fff;
+    font-weight: bold;
+    text-align: left;
+    width: 50%;
+  }
 }
 </style>
